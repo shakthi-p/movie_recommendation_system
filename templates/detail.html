@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>{{ movie.title }} — Details</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style>
+      :root {
+        --bg: #060606;
+        --panel: #0f0f0f;
+        --accent: #e50914;
+        --muted: #9aa0a6;
+        --text: #ffffff;
+        --maxw: 1000px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+      .wrap {
+        max-width: var(--maxw);
+        margin: 36px auto;
+        padding: 20px;
+      }
+      .back {
+        margin-bottom: 14px;
+      }
+      .back a {
+        display: inline-block;
+        padding: 8px 12px;
+        background: #111;
+        border-radius: 8px;
+        text-decoration: none;
+        color: var(--text);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.03);
+      }
+      .panel {
+        background: var(--panel);
+        border-radius: 12px;
+        padding: 28px;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.03);
+      }
+      .head {
+        display: flex;
+        align-items: baseline;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      h1 {
+        margin: 0;
+        color: var(--accent);
+        font-size: 28px;
+      }
+      .original {
+        color: var(--muted);
+        font-size: 14px;
+        margin-top: 6px;
+      }
+      .meta-row {
+        display: flex;
+        gap: 18px;
+        flex-wrap: wrap;
+        margin-top: 14px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .overview {
+        margin-top: 18px;
+        color: #e6e6e6;
+        line-height: 1.6;
+        font-size: 15px;
+      }
+      .tagline {
+        margin-top: 12px;
+        font-style: italic;
+        color: #dcdcdc;
+      }
+      .footer-meta {
+        margin-top: 20px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .btn-primary {
+        display: inline-block;
+        margin-top: 18px;
+        padding: 10px 16px;
+        background: var(--accent);
+        color: #fff;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 700;
+      }
+      .btn-primary:hover {
+        filter: brightness(0.95);
+      }
+      @media (max-width: 720px) {
+        .head {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        h1 {
+          font-size: 22px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="back"><a href="{{ url_for('home') }}">← Back to Home</a></div>
+
+      <div class="panel" role="main">
+        <div class="head">
+          <h1>{{ movie.title }}</h1>
+          {% if movie.original_title and movie.original_title != movie.title %}
+          <div class="original">Original Title: {{ movie.original_title }}</div>
+          {% endif %}
+        </div>
+
+        <div class="meta-row">
+          <div><strong>Genres:</strong> {{ movie.genres or 'N/A' }}</div>
+          <div><strong>Release:</strong> {{ movie.release_date or 'N/A' }}</div>
+          <div>
+            <strong>Language:</strong> {{ movie.original_language or 'N/A' }}
+          </div>
+        </div>
+
+        <div class="overview">
+          <strong>Overview:</strong>
+          <div style="margin-top: 8px">
+            {{ movie.overview or 'No overview available.' }}
+          </div>
+        </div>
+
+        {% if movie.tagline %}
+        <div class="tagline">“{{ movie.tagline }}”</div>
+        {% endif %}
+
+        <div class="footer-meta">
+          <div>
+            <strong>Popularity:</strong> {{ movie.popularity or 'N/A' }}
+          </div>
+        </div>
+
+        <a class="btn-primary" href="{{ url_for('home') }}">Back to Home</a>
+      </div>
+    </div>
+  </body>
+</html>
