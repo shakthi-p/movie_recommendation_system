@@ -21,20 +21,18 @@ A **Netflix-style Movie Recommendation Web App** built with Python and Flask. Ge
 5. Clicking a movie opens its **detail page**  
 
 ## Run Locally
-Create a virtual environment (optional but recommended):
-```bash
+## Create a virtual environment (optional but recommended):
 python -m venv venv
-venv\Scripts\activate  
+venv\Scripts\activate (on Windows)
 
-Install dependencies:
-```bash
+
+## Install dependencies:
 pip install -r requirements.txt
 
-Run the app:
-```bash
+## Run the app:
 python app.py
 
-Open your browser and visit:
+## Open your browser and visit:
 http://127.0.0.1:5000
 
 ## Expected Output
