@@ -37,8 +37,10 @@ http://127.0.0.1:5000
 
 ## Expected Output
 Homepage with **search bar** and **suggested movie cards**
-<img width="1919" height="992" alt="home_Page" src="https://github.com/user-attachments/assets/4123e037-c83f-469f-9246-3449947c0389" />
 Movie **recommendation grid** after search
 **Detail page** with complete info for the selected movie
+
+<img width="1919" height="992" alt="home_Page" src="https://github.com/user-attachments/assets/4123e037-c83f-469f-9246-3449947c0389" />
+
 
 
